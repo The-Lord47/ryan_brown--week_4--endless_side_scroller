@@ -11,7 +11,7 @@ public class spawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawn", 2, 2);
+        InvokeRepeating("spawn", 0, 2);
     }
 
     void spawn()
