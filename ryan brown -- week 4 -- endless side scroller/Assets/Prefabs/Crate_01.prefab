@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 540356731151305135}
   - component: {fileID: 4857681418911082645}
   - component: {fileID: 1507674350968957014}
+  - component: {fileID: 765188816497749870}
   - component: {fileID: 180680483472000628}
   m_Layer: 0
   m_Name: Crate_01
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8186080005182397832}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7520809, y: -4.6120453, z: 4.3876553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   xThreshold: -6
---- !u!65 &180680483472000628
+--- !u!65 &765188816497749870
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,3 +121,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.554324, y: 1.5543231, z: 1.5543228}
   m_Center: {x: 0, y: 0.77716154, z: 0}
+--- !u!65 &180680483472000628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186080005182397832}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.17584229, y: 1.4281961, z: 1.5543228}
+  m_Center: {x: -0.75600624, y: 0.71409804, z: 0}

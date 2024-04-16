@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60541866728185646}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.13792, y: -4.6120453, z: 4.3876553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -58,10 +58,11 @@ GameObject:
   - component: {fileID: 2862072088366790808}
   - component: {fileID: 8789418356597559784}
   - component: {fileID: 2949844872658154677}
+  - component: {fileID: 9096192005677834462}
   - component: {fileID: 5355176678132180131}
   m_Layer: 0
   m_Name: Prop_StoneWall_01
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +132,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9096192005677834462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906450994960793834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.129447, y: 1.0894413, z: 0.5070782}
+  m_Center: {x: 2.455996, y: 0.54472065, z: 0}
 --- !u!65 &5355176678132180131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,5 +172,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.129447, y: 1.0894413, z: 0.5070782}
-  m_Center: {x: 2.455996, y: 0.54472065, z: 0}
+  m_Size: {x: 5.129447, y: 0.9479376, z: 0.17292207}
+  m_Center: {x: 2.455996, y: 0.4739688, z: -0.26558107}

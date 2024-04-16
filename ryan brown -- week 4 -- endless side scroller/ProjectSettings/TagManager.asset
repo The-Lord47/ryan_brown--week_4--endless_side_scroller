@@ -6,6 +6,12 @@ TagManager:
   tags:
   - ground
   - jumpSFX
+  - obstacle
+  - damageSFX
+  - coin
+  - obstacleSpawner
+  - coinSpawner
+  - coinSFX
   layers:
   - Default
   - TransparentFX

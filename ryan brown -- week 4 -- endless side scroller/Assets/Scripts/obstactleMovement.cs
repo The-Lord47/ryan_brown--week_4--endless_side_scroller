@@ -17,7 +17,7 @@ public class obstactleMovement : MonoBehaviour
     void Update()
     {
         //moves object left at rate of speed
-        transform.Translate(Vector3.left *  speed * Time.deltaTime);
+        transform.Translate(Vector3.left *  speed * Time.deltaTime, Space.World);
 
         if (transform.position.x < xThreshold)
         {
