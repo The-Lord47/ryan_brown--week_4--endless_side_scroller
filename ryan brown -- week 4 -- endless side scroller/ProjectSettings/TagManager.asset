@@ -12,6 +12,9 @@ TagManager:
   - obstacleSpawner
   - coinSpawner
   - coinSFX
+  - bgMusic
+  - magnet
+  - magnetboxSpawner
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,12 +11,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     public float jumpForce = 8;
-    public float gravityMultiplier;
     bool isGrounded = false;
 
     GameObject[] jumpSFXs;
     GameObject damageSFX;
-    GameObject coinSFX;
+    public GameObject coinSFX;
 
     Animator _animator;
 
@@ -32,14 +33,20 @@ public class PlayerController : MonoBehaviour
     public GameObject heart3;
 
     public TMP_Text score_txt;
-    int score = 0;
+    public int score = 0;
+
+    public bool gameOver = false;
+
+    public bool magnetActive = false;
+    public GameObject magnet;
+    public float magnetTimer;
+
 
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityMultiplier;
         _animator = GetComponent<Animator>();
         jumpSFXs = GameObject.FindGameObjectsWithTag("jumpSFX");
         damageSFX = GameObject.FindGameObjectWithTag("damageSFX");
@@ -51,7 +58,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //makes the player jump when space is pressed
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded == true || doubleJump == true))
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded == true || doubleJump == true) && gameOver == false)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
@@ -60,6 +67,7 @@ public class PlayerController : MonoBehaviour
             jumpSFXs[0].GetComponent<AudioSource>().Play();
             doubleJump = false;
         }
+
 
         if (iFrames == true)
         {
@@ -70,11 +78,6 @@ public class PlayerController : MonoBehaviour
                 iFrames = false;
                 _animator.SetBool("isDamaged", false);
             }
-        }
-
-        if (lives == 0)
-        {
-            Time.timeScale = 0f;
         }
 
         if (allowDoubleJump == true && isGrounded == false)
@@ -98,9 +101,26 @@ public class PlayerController : MonoBehaviour
         {
             heart2.SetActive(false);
         }
-        if (lives == 0)
+        if (lives <= 0)
         {
             heart1.SetActive(false);
+            gameOver = true;
+            if (Input.anyKeyDown)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+
+        //---------------MAGNET TIMER SYSTEM ---------------
+        if (magnetActive == true)
+        {
+            magnetTimer += Time.deltaTime;
+            if(magnetTimer > 10)
+            {
+                magnetActive = false;
+                magnet.SetActive(false);
+                magnetTimer = 0;
+            }
         }
 
         score_txt.text = "Score:" + score;
@@ -111,17 +131,34 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "obstacle" && iFrames == false)
         {
-            transform.position -= new Vector3(4, 0, 0);
-            damageSFX.GetComponent<AudioSource>().Play();
-            lives--;
-            iFrames = true;
-            _animator.SetBool("isDamaged", true);
+            if(lives > 1) 
+            {
+                transform.position -= new Vector3(4, 0, 0);
+                damageSFX.GetComponent<AudioSource>().Play();
+                lives--;
+                iFrames = true;
+                _animator.SetBool("isDamaged", true);
+            }
+            else
+            {
+                damageSFX.GetComponent<AudioSource>().Play();
+                lives--;
+                _animator.SetBool("Death_b", true);
+            }
+            
         }
 
         if(other.tag == "coin")
         {
             score++;
             coinSFX.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject);
+        }
+
+        if(other.tag == "magnet")
+        {
+            magnet.SetActive(true);
+            magnetActive = true;
             Destroy(other.gameObject);
         }
     }
