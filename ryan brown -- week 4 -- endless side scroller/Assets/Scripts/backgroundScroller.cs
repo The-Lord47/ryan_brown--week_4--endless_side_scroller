@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class backgroundScroller : MonoBehaviour
 {
+    //---------------PRIVATE VARIABLES---------------
+    private float repeatWidth;
+    PlayerController _playerScript;
+
+    //---------------PUBLIC VARIABLES---------------
+    [Header("Scroll Variables")]
     public float scrollSpeed;
     public Vector3 startPos;
-    private float repeatWidth;
 
-    PlayerController _playerScript;
-    // Start is called before the first frame update
+    //---------------START---------------
     void Start()
     {
         transform.position = startPos;
@@ -17,16 +21,18 @@ public class backgroundScroller : MonoBehaviour
         _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
+    //---------------UPDATE---------------
     void Update()
     {
-        if(_playerScript.gameOver == false)
+        //---------------MOVES THE BACKGROUND---------------
+        if (_playerScript.gameOver == false)
         {
             transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime, Space.World);
 
             
         }
 
+        //---------------RESETS BACKGROUND---------------
         if (transform.position[0] <= startPos.x - repeatWidth)
         {
             transform.position = startPos;

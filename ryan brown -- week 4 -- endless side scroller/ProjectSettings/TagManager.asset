@@ -15,6 +15,9 @@ TagManager:
   - bgMusic
   - magnet
   - magnetboxSpawner
+  - taserSFX
+  - magnetRadius
+  - sirenSFX
   layers:
   - Default
   - TransparentFX

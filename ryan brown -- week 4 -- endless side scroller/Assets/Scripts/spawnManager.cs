@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class spawnManager : MonoBehaviour
 {
+    //---------------PRIVATE VARIABLES---------------
+    PlayerController _playerScript;
+
+    //---------------PUBLIC VARIABLES
+    [Header("GameObject References")]
     public GameObject[] obstacles;
     public GameObject coin;
     public GameObject magnetbox;
+
+    [Header("Spawn Variables")]
     public Vector3 spawnPos;
 
-    PlayerController _playerScript;
 
-    // Start is called before the first frame update
+
+    //---------------START---------------
     void Start()
     {
         _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        if(_playerScript.gameOver == false)
+        //---------------SPAWNS OBJECTS, COINS, AND POWERUPS---------------
+        if (_playerScript.gameOver == false)
         {
             if (gameObject.tag == "obstacleSpawner")
             {
@@ -31,18 +39,22 @@ public class spawnManager : MonoBehaviour
             }
         }
     }
+
+    //---------------SPAWNS OBSTACLES---------------
     void spawnObstacles()
     {
         int obstacleIndex = Random.Range(0, obstacles.Length);
         Instantiate(obstacles[obstacleIndex], spawnPos, obstacles[obstacleIndex].transform.rotation, transform);
     }
 
+    //---------------SPAWNS COINS---------------
     void spawnCoins()
     {
         Vector3 tempSpawnPos = spawnPos + new Vector3(Random.Range(-1f,1f), Random.Range(2f, 8f), 0); 
         Instantiate(coin, tempSpawnPos, coin.transform.rotation, transform);
     }
 
+    //---------------SPAWNS MAGNETBOXES---------------
     void spawnMagnetbox()
     {
         Vector3 tempSpawnPos = spawnPos + new Vector3(Random.Range(-1f, 1f), Random.Range(2f, 8f), 0);

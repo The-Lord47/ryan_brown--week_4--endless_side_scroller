@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class coinRotation : MonoBehaviour
 {
+    //---------------PUBLIC VARIABLES---------------
+    [Header("Coin Rotation")]
     public float rotationRate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    //---------------UPDATE---------------
     void Update()
     {
+        //rotates the coin
         transform.Rotate(Vector3.up * rotationRate * Time.deltaTime);
     }
 }

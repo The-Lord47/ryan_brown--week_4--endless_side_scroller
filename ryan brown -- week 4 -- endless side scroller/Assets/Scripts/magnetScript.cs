@@ -5,30 +5,22 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class magnetScript : MonoBehaviour
 {
-
+    //---------------PRIVATE VARIABLES---------------
     PlayerController _playerScript;
     GameObject _player;
 
-    // Start is called before the first frame update
+    //---------------START---------------
     void Start()
     {
+        //gets references
         _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+    //---------------UPDATE---------------
     void Update()
     {
+        //keeps the magnet bubble attached to the player
         transform.position = _player.transform.position + new Vector3(0,2,0);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "coin")
-        {
-            _playerScript.score++;
-            _playerScript.coinSFX.GetComponent<AudioSource>().Play();
-            Destroy(other.gameObject);
-        }
     }
 }

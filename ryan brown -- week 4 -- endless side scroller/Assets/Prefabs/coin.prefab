@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  magnetSpeed: 12
   xThreshold: -6
+  magnetTouch: 0
 --- !u!114 &6544691876798642039
 MonoBehaviour:
   m_ObjectHideFlags: 0
