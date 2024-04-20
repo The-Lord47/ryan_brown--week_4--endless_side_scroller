@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -109,6 +108,10 @@ public class PlayerController : MonoBehaviour
         }
         if (lives <= 0)
         {
+            if (score > PlayerPrefs.GetInt("Highscore_endless_runner"))
+            {
+                PlayerPrefs.SetInt("Highscore_endless_runner", score);
+            }
             heart1.SetActive(false);
             _dirt.Stop();
             gameOver = true;

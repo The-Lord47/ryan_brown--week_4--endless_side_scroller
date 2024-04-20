@@ -19,10 +19,13 @@ public class UIController : MonoBehaviour
     public GameObject EndScreen;
     public GameObject magnetboxUI;
     public TMP_Text magnetboxTimer_txt;
+    public TMP_Text highscore_txt;
 
     //---------------START---------------
     void Start()
     {
+        //sets the highscore
+        highscore_txt.text = "Highscore:" + PlayerPrefs.GetInt("Highscore_endless_runner").ToString();
         //starts the game with game and end ui off and start ui on
         GameplayUI.SetActive(false);
         EndScreen.SetActive(false);
